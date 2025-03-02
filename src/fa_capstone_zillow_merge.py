@@ -48,11 +48,8 @@ download_csv_file()
 
 from pyspark.sql.functions import col, split, regexp_replace, to_date, current_date, lower, trim, array, struct, lit, explode
 
-def get_zillow_home_value_df():    
-    zillow_home_value_index_df = spark.read.csv(CSV_FILE_LOCAL_PATH, header=True, inferSchema=True)
-
-    # TODO(fali) make it dynamic
-    date_columns_hvi = [c for c in zillow_home_value_index_df.columns if c.startswith('2024')]
+def update_zillow_home_value_df(zillow_home_value_index_df):    
+    date_columns_hvi = [c for c in zillow_home_value_index_df.columns if c.startswith('20')]
     identifier_columns_hvi = [c for c in zillow_home_value_index_df.columns if not c.startswith('20')]
 
     # Create an array of structs, where each struct contains the date and value
@@ -77,7 +74,8 @@ def get_zillow_home_value_df():
     
     return zillow_home_value_index_unpivoted_df
 
-zillow_home_value_index_df = get_zillow_home_value_df()
+zillow_home_value_index_df = spark.read.csv(CSV_FILE_LOCAL_PATH, header=True, inferSchema=True)
+zillow_home_value_index_df = update_zillow_home_value_df(zillow_home_value_index_df)
 
 # Define the table name
 ZILLOW_HOME_VALUE_INDEX_TABLE_NAME = "tabular.dataexpert.fa_zillow_data"
