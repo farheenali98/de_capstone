@@ -164,7 +164,10 @@ The Tableau dashboard provides a rich set of interactive visualizations:
 ## Usage  
 ### Data Pipeline  
 - The data pipeline is automated using **Apache Airflow** and **Databricks DLT**, ensuring regular updates from Redfin, Zillow, and Yelp.  
-- **Databricks:** Data is stored and processed in Delta tables within Databricks.  
+- **Databricks:** Data is stored and processed in Delta tables within Databricks.
+
+## DAG Execution
+![DAG Execution](resources/DAG.png)
 
 ## Data Pipeline Flow  
 
