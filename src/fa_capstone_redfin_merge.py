@@ -52,8 +52,7 @@ download_tsv_file()
 from pyspark.sql.functions import col, split, regexp_replace, to_date, current_date, lower, trim
 
 # Define the function to generate Redfin weekly data
-def get_redfin_weekly_df():
-    df = spark.read.csv(TSV_FILE_LOCAL_PATH, sep='\t', header=True, inferSchema=True)
+def update_redfin_weekly_df(df):
     df = df.filter(col("region_type_id") == 5)
     df = df.withColumn("county_name", split(col("region_name"), ",")[0]) \
            .withColumn("state_id", lower(trim(split(col("region_name"), ",")[1])))
@@ -63,7 +62,8 @@ def get_redfin_weekly_df():
     df = df.dropDuplicates(["period_begin", "period_end", "county_name", "state_id"])
     return df
 
-redfin_weekly_df = get_redfin_weekly_df()
+redfin_weekly_df = spark.read.csv(TSV_FILE_LOCAL_PATH, sep='\t', header=True, inferSchema=True)
+redfin_weekly_df = update_redfin_weekly_df(redfin_weekly_df)
 
 # Define the table name
 REDFIN_WEEKLY_TABLE_NAME = "tabular.dataexpert.fa_redfin_data"
