@@ -164,11 +164,6 @@ The Tableau dashboard provides a rich set of interactive visualizations:
 - The data pipeline is automated using **Apache Airflow** and **Databricks DLT**, ensuring regular updates from Redfin, Zillow, and Yelp.  
 - **Databricks:** Data is stored and processed in Delta tables within Databricks.  
 
-### Tableau Dashboard  
-- **Access** the interactive Tableau dashboard to explore neighborhood insights.  
-- **Filtering:** Use the dashboard's filtering capabilities to analyze specific neighborhoods based on your criteria.  
-- **Visualizations:** Utilize the heatmaps and time series charts to gain a deeper understanding of neighborhood trends.  
-
 ## Data Pipeline Flow  
 
 
@@ -188,4 +183,16 @@ graph TD
     G --> H[DatabricksPipeline]
     H --> I[DeltaTables]
     I --> J[Tableau: Viz]
+```
 
+### Tableau Dashboard  
+- **Access** the interactive Tableau dashboard to explore neighborhood insights.  
+- **Filtering:** Use the dashboard's filtering capabilities to analyze specific neighborhoods based on your criteria.  
+- **Visualizations:** Utilize the heatmaps and time series charts to gain a deeper understanding of neighborhood trends.
+
+#### Landing Page
+![Landing Page](resources/LandingPage.png)
+#### Drill Down to Zip Code
+![Drill Down to Zip Code](resources/DrillDownToZip.png)
+#### Insights Into Neighborhood
+![Insights Into Neighborhood](resources/InsightsIntoNeighborhood.png)
