@@ -19,10 +19,10 @@ The core of the project revolves around a Delta table architecture within Databr
 
 ### Data Sources
 
-* **Redfin Dataset (TSV ~5 Million):** Provides weekly and monthly real estate market trends. [https://www.redfin.com/news/data-center/](https://www.redfin.com/news/data-center/)
-* **Zillow Dataset (CSV):** Offers real estate market data. [https://www.zillow.com/research/data/](https://www.zillow.com/research/data/)
-* **Yelp Dataset (JSON ~7 Million):** Contains business data, including ratings, reviews, and locations. [https://business.yelp.com/data/resources/open-dataset/](https://business.yelp.com/data/resources/open-dataset/)
-* **US Zips Data:** Provides zip code information, latitude, longitude, city, state, population, etc. [https://simplemaps.com/data/us-zips](https://simplemaps.com/data/us-zips)
+* **[Redfin Dataset](https://www.redfin.com/news/data-center) (TSV ~5 Million):** Provides weekly and monthly real estate market trends.
+* **[Zillow Dataset](https://www.zillow.com/research/data/) (CSV):** Offers real estate market data. 
+* **[Yelp Dataset](https://business.yelp.com/data/resources/open-dataset/) (JSON ~7 Million):** Contains business data, including ratings, reviews, and locations.
+* **[US Zips Dataset](https://simplemaps.com/data/us-zips):** Provides zip code information, latitude, longitude, city, state, population, etc.
 
 ### Data Schema
 
