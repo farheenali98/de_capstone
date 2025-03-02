@@ -97,10 +97,7 @@ from pyspark.sql.functions import col, lower, trim, to_date, current_date, regex
 json_path = "/Volumes/tabular/dataexpert/farheenali444/capstone_temp/Yelp/processed_data/Yelp JSON/extracted/yelp_academic_dataset_business.json"
 
 # Define the function to generate Yelp business data
-def get_yelp_business_df():
-    # Read the JSON file into a DataFrame
-    df = spark.read.json(json_path)
-    
+def update_yelp_business_df(df):
     # Process the DataFrame
     df = df.withColumn("processed_date", to_date(current_date()))
     df = df.withColumn("state", lower(trim(col("state"))))
@@ -122,7 +119,9 @@ def get_yelp_business_df():
     
     return df
 
-yelp_df = get_yelp_business_df()
+# Read the JSON file into a DataFrame
+yelp_df = spark.read.json(json_path)
+yelp_df = update_yelp_business_df(yelp_df)
 
 # Define the table name
 TMP_YELP_BUSINESS_TABLE_NAME = "tabular.dataexpert.fa_yelp_business_data"
