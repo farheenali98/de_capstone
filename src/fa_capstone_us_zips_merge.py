@@ -71,18 +71,17 @@ extract_zip_file()
 
 # COMMAND ----------
 
-def get_us_zips_df():
-  us_zips_path = "/Volumes/tabular/dataexpert/farheenali444/capstone_temp/Zips/processed_data/uszips.csv"
-  df = spark.read.csv(us_zips_path, header=True, inferSchema=True)
+def update_us_zips_df():
   df = df.withColumn("county_name", lower(trim(regexp_replace(col("county_name"), "(?i) county$", ""))))
   df = df.withColumn("state_id", lower(trim(col("state_id"))))
   df = df.drop("zcta", "parent_zcta", "imprecise", "military", "timezone", "county_weights", "county_names_all", "county_fips_all", "county_fips")
   df = df.withColumn("processed_date", to_date(current_date()))
   df = df.dropDuplicates(["zip"])
-
   return df
 
-us_zips_df = get_us_zips_df()
+US_ZIPS_PATH = "/Volumes/tabular/dataexpert/farheenali444/capstone_temp/Zips/processed_data/uszips.csv"
+us_zips_df = spark.read.csv(us_zips_path, header=True, inferSchema=True)
+us_zips_df = update_us_zips_df(us_zips_df)
 
 # Merge the new data into the existing Delta table with schema evolution
 us_zips_df.createOrReplaceTempView("new_us_zips_data")
