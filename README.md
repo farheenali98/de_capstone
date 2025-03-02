@@ -131,7 +131,20 @@ erDiagram
 - **Data Type Mismatch:** Handling data type mismatch.  
 - **Incremental Updates:** Using Databricks MERGE command to manage schema changes and incremental updates.  
 - **Databricks DLT:** Using DLT to fetch, unzip, transform, clean, and merge data with zero downtime.  
-- **Zillow Date Unpivoting:** Unpivoting the date columns from Zillow to rows.  
+- **Zillow Date Unpivoting:** Unpivoting the date columns from Zillow to rows.
+
+## Unit Testing
+
+This project includes comprehensive unit tests to ensure the reliability and correctness of the data transformation code. Each source code file has a corresponding test file that covers various scenarios and edge cases.
+
+The unit tests are written using PyTest and are designed to:
+
+* Verify that data transformations are performed correctly.
+* Check for data type consistency and integrity.
+* Ensure that data filtering and deduplication logic works as expected.
+* Verify that lower casing, and other string manipulation is performed correctly.
+* Verify unpivoting of data.
+* Verify that the correct columns are dropped.
 
 ## Visualization  
 The Tableau dashboard provides a rich set of interactive visualizations:  
